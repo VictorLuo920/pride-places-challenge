@@ -2,16 +2,18 @@ import { Text, Heading } from "@chakra-ui/react";
 import { Container } from "../components/Container";
 import { Main } from "../components/Main";
 import { Card } from "../components/Card";
+import {DarkModeSwitch} from "../components/DarkModeSwitch"
 
 const Index = ({ posts }) => {
   return (
-    <Container height="100vh">
+    <Container minHeight="100vh">
       <Main>
         <Heading>List of TypeCode API Posts</Heading>
         <Text>Pride Places API Challenge by Victor Luo</Text>
         {posts.map((post, i) => (
           <Card post={post} key={i} />
         ))}
+        <DarkModeSwitch />
       </Main>
     </Container>
   );
