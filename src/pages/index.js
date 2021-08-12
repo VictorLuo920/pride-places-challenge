@@ -17,7 +17,7 @@ const Index = ({ posts }) => {
     <Container height="100vh">
       <Main>
         <Text>
-          Example repository of <Code>Next.js</Code> + <Code>chakra-ui</Code>.
+          Pride Places API Challenge by Victor Luo
         </Text>
         <Button>Click Here</Button>
         {posts.map((post) => (
