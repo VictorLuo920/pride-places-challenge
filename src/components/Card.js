@@ -12,6 +12,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
+var jsonQuery = require("json-query");
 
 export const Card = ({ post }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -31,8 +32,10 @@ export const Card = ({ post }) => {
       .catch((err) => console.log(err));
   }, [user]);
 
-  let { name } = user;
-  let { catchPhrase } = user.company;
+  let {
+    name: userName,
+    company: { catchPhrase: userCatchPhrase } = { catchPhrase: "null" },
+  } = user;
 
   return (
     <Box m={2} p={2} borderWidth="1px">
@@ -47,13 +50,12 @@ export const Card = ({ post }) => {
       <Modal isOpen={isOpen} onClose={onClose} size="xl">
         <ModalOverlay>
           <ModalContent>
-            <ModalHeader>{title}</ModalHeader>
+            <ModalHeader>Title: {title}</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-              <Text>{body}</Text>
-              <Text color="red">
-                {name} {catchPhrase}
-              </Text>
+              <Text mb={1}>body: {body}</Text>
+              <Text mb={1}>published by: {userName}</Text>
+              <Text mb={1}>catchphrase: {userCatchPhrase}</Text>
             </ModalBody>
           </ModalContent>
         </ModalOverlay>
